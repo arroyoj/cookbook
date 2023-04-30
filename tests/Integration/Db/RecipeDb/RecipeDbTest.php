@@ -139,7 +139,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'category' => 'my category',
 		];
 		ksort($expected);
-		ksort($recipe);
+		ksort($recipe[0]);
 		$this->assertSame([$expected], $recipe);
 
 		$this->dut->updateCategoryOfRecipe(1234, 'new category', $user);
@@ -154,7 +154,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'category' => 'new category',
 		];
 		ksort($expected);
-		ksort($recipe);
+		ksort($recipe[0]);
 		$this->assertSame([$expected], $recipe);
 
 		$this->assertSame('new category', $this->dut->getCategoryOfRecipe(1234, $user));
@@ -192,7 +192,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'category' => null,
 		];
 		ksort($expected);
-		ksort($recipes);
+		ksort($recipes[0]);
 		$this->assertSame([$expected], $recipes);
 
 		$this->assertSame(['A', 'B', 'c'], $this->dut->getKeywordsOfRecipe(1234, $user));
@@ -213,7 +213,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'category' => null,
 		];
 		ksort($expected);
-		ksort($recipes);
+		ksort($recipes[0]);
 		$this->assertSame([$expected], $recipes);
 	}
 
