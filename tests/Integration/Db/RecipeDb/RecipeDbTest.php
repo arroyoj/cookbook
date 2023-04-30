@@ -44,7 +44,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
-		$this->assertEquals($expected, $allRecipes[0]);
+		$this->assertSame($expected, $allRecipes[0]);
 
 		$recipeStub = [
 			'name' => 'My new recipe name',
@@ -64,7 +64,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
-		$this->assertEquals($expected, $allRecipes[0]);
+		$this->assertSame($expected, $allRecipes[0]);
 
 		$expected = [
 			'name' => 'My new recipe name',
@@ -75,10 +75,10 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			// 'category' => null,
 		];
 		$recipe = $this->dut->findRecipeById(1234);
-		$this->assertEquals($expected, $recipe);
+		$this->assertSame($expected, $recipe);
 
 		$this->dut->deleteRecipeById(1234);
-		$this->assertEmpty($this->dut->findAllRecipes($user));
+		$this->assertSame($this->dut->findAllRecipes($user));
 	}
 
 	public function testEmptyDate() {
@@ -104,7 +104,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
-		$this->assertEquals($expected, $allRecipes[0]);
+		$this->assertSame($expected, $allRecipes[0]);
 	}
 
 	public function testCategoryAddReplace() {
@@ -130,7 +130,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => 'my category',
 		];
-		$this->assertEquals([$expected], $recipe);
+		$this->assertSame([$expected], $recipe);
 
 		$this->dut->updateCategoryOfRecipe(1234, 'new category', $user);
 
@@ -143,9 +143,9 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => 'new category',
 		];
-		$this->assertEquals([$expected], $recipe);
+		$this->assertSame([$expected], $recipe);
 
-		$this->assertEquals('new category', $this->dut->getCategoryOfRecipe(1234, $user));
+		$this->assertSame('new category', $this->dut->getCategoryOfRecipe(1234, $user));
 
 		$this->dut->removeCategoryOfRecipe(1234, $user);
 		$this->assertNull($this->dut->getCategoryOfRecipe(1234, $user));
@@ -179,9 +179,9 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => 'A,B,c',
 			'category' => null,
 		];
-		$this->assertEquals([$expected], $recipes);
+		$this->assertSame([$expected], $recipes);
 
-		$this->assertEquals(['A', 'B', 'c'], $this->dut->getKeywordsOfRecipe(1234, $user));
+		$this->assertSame(['A', 'B', 'c'], $this->dut->getKeywordsOfRecipe(1234, $user));
 
 		$pairs = [
 			['recipeId' => 1234, 'name' => 'A'],
@@ -198,7 +198,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => 'B',
 			'category' => null,
 		];
-		$this->assertEquals([$expected], $recipes);
+		$this->assertSame([$expected], $recipes);
 	}
 
 	public function testEmptyInsert() {

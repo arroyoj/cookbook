@@ -138,7 +138,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 				'category' => 'desert',
 			],
 		];
-		$this->assertEquals($expected, $recipes);
+		$this->assertSame($expected, $recipes);
 	}
 
 	public function testGetAllRecipesOfCategory() {
@@ -161,7 +161,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 				'keywords' => 'Fast,Favorites,Foreign,Sweet',
 			],
 		];
-		$this->assertEquals($expected, $recipes);
+		$this->assertSame($expected, $recipes);
 	}
 
 	public function testGetAllRecipesOfEmptyCategory() {
@@ -176,7 +176,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 				'category' => null,
 			],
 		];
-		$this->assertEquals($expected, $recipes);
+		$this->assertSame($expected, $recipes);
 	}
 
 	public function testGetNonExistingRecipe() {
@@ -220,7 +220,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 				'keywords' => 'Beef,Meat',
 			],
 		];
-		$this->assertEquals($expected, $recipes);
+		$this->assertSame($expected, $recipes);
 	}
 
 	public function testDeleteRecipes() {
@@ -260,7 +260,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 		];
 
-		$this->assertEquals($expected, $this->dut->findAllRecipes($this->user));
+		$this->assertSame($expected, $this->dut->findAllRecipes($this->user));
 	}
 
 	public function testEmptySearchIndex() {
@@ -270,6 +270,6 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expectedCat = [
 			['name' => '*', 'recipe_count' => 0],
 		];
-		$this->assertEquals($expectedCat, $this->dut->findAllCategories($this->user));
+		$this->assertSame($expectedCat, $this->dut->findAllCategories($this->user));
 	}
 }
