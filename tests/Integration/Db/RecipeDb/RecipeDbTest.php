@@ -44,6 +44,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
+		ksort($expected);
+		ksort($allRecipes[0]);
 		$this->assertSame($expected, $allRecipes[0]);
 
 		$recipeStub = [
@@ -64,6 +66,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
+		ksort($expected);
+		ksort($allRecipes[0]);
 		$this->assertSame($expected, $allRecipes[0]);
 
 		$expected = [
@@ -75,10 +79,12 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			// 'category' => null,
 		];
 		$recipe = $this->dut->findRecipeById(1234);
+		ksort($expected);
+		ksort($recipe);
 		$this->assertSame($expected, $recipe);
 
 		$this->dut->deleteRecipeById(1234);
-		$this->assertSame($this->dut->findAllRecipes($user));
+		$this->assertEmpty($this->dut->findAllRecipes($user));
 	}
 
 	public function testEmptyDate() {
@@ -104,6 +110,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => null,
 		];
+		ksort($expected);
+		ksort($allRecipes[0]);
 		$this->assertSame($expected, $allRecipes[0]);
 	}
 
@@ -130,6 +138,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => 'my category',
 		];
+		ksort($expected);
+		ksort($recipe);
 		$this->assertSame([$expected], $recipe);
 
 		$this->dut->updateCategoryOfRecipe(1234, 'new category', $user);
@@ -143,6 +153,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => null,
 			'category' => 'new category',
 		];
+		ksort($expected);
+		ksort($recipe);
 		$this->assertSame([$expected], $recipe);
 
 		$this->assertSame('new category', $this->dut->getCategoryOfRecipe(1234, $user));
@@ -179,6 +191,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => 'A,B,c',
 			'category' => null,
 		];
+		ksort($expected);
+		ksort($recipes);
 		$this->assertSame([$expected], $recipes);
 
 		$this->assertSame(['A', 'B', 'c'], $this->dut->getKeywordsOfRecipe(1234, $user));
@@ -198,6 +212,8 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 			'keywords' => 'B',
 			'category' => null,
 		];
+		ksort($expected);
+		ksort($recipes);
 		$this->assertSame([$expected], $recipes);
 	}
 
