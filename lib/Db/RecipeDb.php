@@ -53,7 +53,7 @@ class RecipeDb {
 
 		$ret = [];
 		$ret['name'] = $row['name'];
-		$ret['id'] = $row['recipe_id'];
+		$ret['id'] = strval($row['recipe_id']);
 		$ret['dateCreated'] = $row['date_created'];
 		$ret['dateModified'] = $row['date_modified'];
 
@@ -113,6 +113,7 @@ class RecipeDb {
 		$cursor->closeCursor();
 
 		$result = $this->mapDbNames($result);
+		$result = $this->mapRecipeIdString($result);
 
 		$result = $this->sortRecipes($result);
 
@@ -129,6 +130,13 @@ class RecipeDb {
 			unset($x['date_created']);
 			unset($x['date_modified']);
 
+			return $x;
+		}, $results);
+	}
+
+	private function mapRecipeIdString($results) {
+		return array_map(function ($x) {
+			$x['recipe_id'] = strval($x['recipe_id']);
 			return $x;
 		}, $results);
 	}
@@ -293,6 +301,7 @@ class RecipeDb {
 		$cursor->closeCursor();
 
 		$result = $this->mapDbNames($result);
+		$result = $this->mapRecipeIdString($result);
 		$result = array_map(function ($x) use ($category) {
 			if ($category === '_') {
 				$x['category'] = null;
@@ -336,6 +345,7 @@ class RecipeDb {
 		$cursor->closeCursor();
 
 		$result = $this->mapDbNames($result);
+		$result = $this->mapRecipeIdString($result);
 
 		// group recipes, convert keywords to comma-separated list
 		$recipesGroupedTags = $this->groupKeywordInResult($result);
@@ -391,6 +401,7 @@ class RecipeDb {
 		$cursor->closeCursor();
 
 		$result = $this->mapDbNames($result);
+		$result = $this->mapRecipeIdString($result);
 
 		// group recipes, convert keywords to comma-separated list
 		$recipesGroupedTags = $this->groupKeywordInResult($result);
