@@ -38,7 +38,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => '2022-02-01 15:10:00',
 			'dateModified' => '2022-03-05 11:12:34',
 			'keywords' => null,
@@ -60,7 +60,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 
 		$expected = [
 			'name' => 'My new recipe name',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => '2022-12-11 10:11:12',
 			'dateModified' => '2022-09-25 16:17:18',
 			'keywords' => null,
@@ -72,7 +72,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 
 		$expected = [
 			'name' => 'My new recipe name',
-			'id' => 1234,
+			'id' => '1234',
 			'dateCreated' => '2022-12-11 10:11:12',
 			'dateModified' => '2022-09-25 16:17:18',
 			// 'keywords' => null,
@@ -104,7 +104,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => null,
 			'dateModified' => null,
 			'keywords' => null,
@@ -132,7 +132,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 		$recipe = $this->dut->findAllRecipes($user);
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => null,
 			'dateModified' => null,
 			'keywords' => null,
@@ -147,7 +147,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 		$recipe = $this->dut->findAllRecipes($user);
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => null,
 			'dateModified' => null,
 			'keywords' => null,
@@ -185,7 +185,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 		$recipes = $this->dut->findAllRecipes($user);
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => null,
 			'dateModified' => null,
 			'keywords' => 'A,B,c',
@@ -206,7 +206,7 @@ class RecipeDbTest extends AbstractDatabaseTestCase {
 		$recipes = $this->dut->findAllRecipes($user);
 		$expected = [
 			'name' => 'My recipe',
-			'recipe_id' => 1234,
+			'recipe_id' => '1234',
 			'dateCreated' => null,
 			'dateModified' => null,
 			'keywords' => 'B',

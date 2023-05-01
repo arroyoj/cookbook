@@ -123,7 +123,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expected = [
 			[
 				'name' => 'Chicken',
-				'recipe_id' => 3456,
+				'recipe_id' => '3456',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'keywords' => 'Chicken,Favorites,Meat',
@@ -131,7 +131,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Cooked Bananas',
-				'recipe_id' => 1234,
+				'recipe_id' => '1234',
 				'dateCreated' => '2022-05-03 14:30:12',
 				'dateModified' => null,
 				'keywords' => 'Fast,Favorites,Foreign,Sweet',
@@ -146,7 +146,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expected = [
 			[
 				'name' => 'Cake',
-				'recipe_id' => 6789,
+				'recipe_id' => '6789',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'desert',
@@ -154,7 +154,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Cooked Bananas',
-				'recipe_id' => 1234,
+				'recipe_id' => '1234',
 				'dateCreated' => '2022-05-03 14:30:12',
 				'dateModified' => null,
 				'category' => 'desert',
@@ -169,7 +169,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expected = [
 			[
 				'name' => 'Water',
-				'recipe_id' => 2,
+				'recipe_id' => '2',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'keywords' => null,
@@ -189,7 +189,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expected = [
 			[
 				'name' => 'Cake',
-				'recipe_id' => 6789,
+				'recipe_id' => '6789',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'desert',
@@ -197,7 +197,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Chicken',
-				'recipe_id' => 3456,
+				'recipe_id' => '3456',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'Main dishes',
@@ -213,7 +213,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Pulled Beef',
-				'recipe_id' => 2345,
+				'recipe_id' => '2345',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'Main dishes',
@@ -228,7 +228,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 		$expected = [
 			[
 				'name' => 'Cake',
-				'recipe_id' => 6789,
+				'recipe_id' => '6789',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'desert',
@@ -236,7 +236,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Pulled Beef',
-				'recipe_id' => 2345,
+				'recipe_id' => '2345',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'Main dishes',
@@ -244,7 +244,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Salad',
-				'recipe_id' => 5678,
+				'recipe_id' => '5678',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => 'Opener',
@@ -252,7 +252,7 @@ class RecipeDbBigTest extends AbstractDatabaseTestCase {
 			],
 			[
 				'name' => 'Water',
-				'recipe_id' => 2,
+				'recipe_id' => '2',
 				'dateCreated' => '2021-06-15 20:10:00',
 				'dateModified' => '2021-07-15 14:12:00',
 				'category' => null,
