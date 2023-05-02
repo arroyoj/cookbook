@@ -115,8 +115,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->import();
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($json, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($json, $ret->getData());
 	}
 
 	public function testImportExisting(): void {
@@ -140,8 +140,8 @@ class RecipeImplementationTest extends TestCase {
 			'file' => $ex->getFile(),
 		];
 
-		$this->assertEquals(409, $ret->getStatus());
-		$this->assertEquals($expected, $ret->getData());
+		$this->assertSame(409, $ret->getStatus());
+		$this->assertSame($expected, $ret->getData());
 	}
 
 	public function testImportOther(): void {
@@ -160,8 +160,8 @@ class RecipeImplementationTest extends TestCase {
 		$ret = $this->sut->import();
 
 
-		$this->assertEquals(400, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData());
+		$this->assertSame(400, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData());
 	}
 
 	/**
@@ -181,8 +181,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->getAllInCategory(urlencode($cat));
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($expected, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($expected, $ret->getData());
 	}
 
 	private function getExpectedRecipes($recipes): array {
@@ -259,8 +259,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->getAllInCategory(urlencode($cat));
 
-		$this->assertEquals(500, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData());
+		$this->assertSame(500, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData());
 	}
 
 	/**
@@ -280,8 +280,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->getAllWithTags(urlencode($keywords));
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($expected, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($expected, $ret->getData());
 	}
 
 	public function dataProviderTags(): array {
@@ -344,8 +344,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->getAllWithTags(urlencode($keywords));
 
-		$this->assertEquals(500, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData());
+		$this->assertSame(500, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData());
 	}
 
 	/**
@@ -366,8 +366,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$res = $this->sut->search(urlencode($query));
 
-		$this->assertEquals(200, $res->getStatus());
-		$this->assertEquals($expected, $res->getData());
+		$this->assertSame(200, $res->getStatus());
+		$this->assertSame($expected, $res->getData());
 	}
 
 	public function dpSearch() {
@@ -409,8 +409,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$res = $this->sut->search(urlencode($query));
 
-		$this->assertEquals(500, $res->getStatus());
-		$this->assertEquals($errorMsg, $res->getData());
+		$this->assertSame(500, $res->getStatus());
+		$this->assertSame($errorMsg, $res->getData());
 	}
 
 	public function testUpdate(): void {
@@ -421,8 +421,9 @@ class RecipeImplementationTest extends TestCase {
 		 * @var File|MockObject $file
 		 */
 		$file = $this->createMock(File::class);
+		$id = 50;
 		$file->method('getParent')->willReturnSelf();
-		$file->method('getId')->willReturn(50);
+		$file->method('getId')->willReturn($id);
 
 		$this->restParser->method('getParameters')->willReturn($data);
 		$this->recipeService->expects($this->once())->method('addRecipe')->with($data)->willReturn($file);
@@ -430,8 +431,8 @@ class RecipeImplementationTest extends TestCase {
 
 		$ret = $this->sut->update(1);
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals(50, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($id, $ret->getData());
 	}
 
 	public function testUpdateNoName(): void {
@@ -448,8 +449,8 @@ class RecipeImplementationTest extends TestCase {
 
 		$ret = $this->sut->update(1);
 
-		$this->assertEquals(422, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData()['msg']);
+		$this->assertSame(422, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData()['msg']);
 	}
 
 	public function testCreate(): void {
@@ -472,8 +473,8 @@ class RecipeImplementationTest extends TestCase {
 
 		$ret = $this->sut->create();
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($id, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($id, $ret->getData());
 	}
 
 	public function testCreateNoName(): void {
@@ -491,8 +492,8 @@ class RecipeImplementationTest extends TestCase {
 
 		$ret = $this->sut->create();
 
-		$this->assertEquals(422, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData()['msg']);
+		$this->assertSame(422, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData()['msg']);
 	}
 
 	public function testCreateExisting(): void {
@@ -547,8 +548,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->show($id);
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($expected, $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($expected, $ret->getData());
 	}
 
 	public function testShowFailure(): void {
@@ -562,7 +563,7 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->show($id);
 
-		$this->assertEquals(404, $ret->getStatus());
+		$this->assertSame(404, $ret->getStatus());
 	}
 
 	public function testDestroy(): void {
@@ -575,7 +576,7 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->destroy($id);
 
-		$this->assertEquals(200, $ret->getStatus());
+		$this->assertSame(200, $ret->getStatus());
 	}
 
 	public function testDestroyFailed(): void {
@@ -589,8 +590,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->destroy($id);
 
-		$this->assertEquals(502, $ret->getStatus());
-		$this->assertEquals($errorMsg, $ret->getData());
+		$this->assertSame(502, $ret->getStatus());
+		$this->assertSame($errorMsg, $ret->getData());
 	}
 
 	/**
@@ -670,7 +671,7 @@ class RecipeImplementationTest extends TestCase {
 
 		$ret = $this->sut->image($id);
 
-		$this->assertEquals($expectedStatus, $ret->getStatus());
+		$this->assertSame($expectedStatus, $ret->getStatus());
 	}
 
 	/**
@@ -708,8 +709,8 @@ class RecipeImplementationTest extends TestCase {
 		 */
 		$ret = $this->sut->index();
 
-		$this->assertEquals(200, $ret->getStatus());
-		$this->assertEquals($this->updateIndexRecipesAsExpected($recipes), $ret->getData());
+		$this->assertSame(200, $ret->getStatus());
+		$this->assertSame($this->updateIndexRecipesAsExpected($recipes), $ret->getData());
 
 		// $this->markTestIncomplete('assertions are missing');
 	}
