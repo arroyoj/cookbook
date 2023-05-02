@@ -192,6 +192,7 @@ class RecipeImplementationTest extends TestCase {
 		for ($i = 0; $i < count($recipes); $i++) {
 			$id = $recipes[$i]['recipe_id'];
 			$ids[] = $id;
+			$ret[$i]['recipe_id'] = strval($id);
 			$ret[$i]['imageUrl'] = "/path/to/image/$id/thumb";
 			$ret[$i]['imagePlaceholderUrl'] = "/path/to/image/$id/thumb16";
 		}
@@ -218,6 +219,19 @@ class RecipeImplementationTest extends TestCase {
 				[]
 			],
 			'someRecipes' => [
+				'My category',
+				[
+					[
+						'name' => 'My recipe 1',
+						'recipe_id' => '123',
+					],
+					[
+						'name' => 'My recipe 2',
+						'recipe_id' => '122',
+					],
+				]
+			],
+			'recipeIdsAsInts' => [
 				'My category',
 				[
 					[
@@ -277,11 +291,11 @@ class RecipeImplementationTest extends TestCase {
 				[
 					[
 						'name' => 'My recipe 1',
-						'recipe_id' => 123,
+						'recipe_id' => '123',
 					],
 					[
 						'name' => 'My recipe 2',
-						'recipe_id' => 122,
+						'recipe_id' => '122',
 					],
 				]
 			],
@@ -290,6 +304,19 @@ class RecipeImplementationTest extends TestCase {
 				[]
 			],
 			'someRecipes' => [
+				'Tag A, Tag B',
+				[
+					[
+						'name' => 'My recipe 1',
+						'recipe_id' => '123',
+					],
+					[
+						'name' => 'My recipe 2',
+						'recipe_id' => '122',
+					],
+				]
+			],
+			'recipeIdsAsInts' => [
 				'Tag A, Tag B',
 				[
 					[
@@ -350,6 +377,15 @@ class RecipeImplementationTest extends TestCase {
 				[],
 			],
 			'someRecipes' => [
+				'some query',
+				[
+					[
+						'name' => 'First recipe',
+						'recipe_id' => '123',
+					],
+				],
+			],
+			'recipeIdsAsInts' => [
 				'some query',
 				[
 					[
@@ -682,6 +718,7 @@ class RecipeImplementationTest extends TestCase {
 		$ret = $recipes;
 		for ($i = 0; $i < count($ret); $i++) {
 			$id = $ret[$i]['recipe_id'];
+			$ret[$i]['recipe_id'] = strval($id);
 			$ret[$i]['imageUrl'] = "/path/to/controller/$id/thumb";
 			$ret[$i]['imagePlaceholderUrl'] = "/path/to/controller/$id/thumb16";
 		}
@@ -697,6 +734,20 @@ class RecipeImplementationTest extends TestCase {
 				null,
 			],
 			'normalIndex' => [
+				[
+					[
+						'recipe_id' => '123',
+						'name' => 'First recipe',
+					],
+					[
+						'recipe_id' => '125',
+						'name' => 'Second recipe',
+					],
+				],
+				false,
+				null,
+			],
+			'recipeIdsAsInts' => [
 				[
 					[
 						'recipe_id' => 123,
