@@ -67,6 +67,7 @@ class RecipeImplementation {
 			$recipes = $this->service->findRecipesInSearchIndex(isset($_GET['keywords']) ? $_GET['keywords'] : '');
 		}
 		foreach ($recipes as $i => $recipe) {
+			$recipes[$i]['recipe_id'] = strval($recipe['recipe_id']);
 			$recipes[$i]['imageUrl'] = $this->urlGenerator->linkToRoute('cookbook.recipe.image', ['id' => $recipe['recipe_id'], 'size' => 'thumb']);
 			$recipes[$i]['imagePlaceholderUrl'] = $this->urlGenerator->linkToRoute('cookbook.recipe.image', ['id' => $recipe['recipe_id'], 'size' => 'thumb16']);
 		}
@@ -250,6 +251,7 @@ class RecipeImplementation {
 			$recipes = $this->service->findRecipesInSearchIndex($query);
 
 			foreach ($recipes as $i => $recipe) {
+				$recipes[$i]['recipe_id'] = strval($recipe['recipe_id']);
 				$recipes[$i]['imageUrl'] = $this->urlGenerator->linkToRoute(
 					'cookbook.recipe.image',
 					[
@@ -286,6 +288,7 @@ class RecipeImplementation {
 		try {
 			$recipes = $this->service->getRecipesByCategory($category);
 			foreach ($recipes as $i => $recipe) {
+				$recipes[$i]['recipe_id'] = strval($recipe['recipe_id']);
 				$recipes[$i]['imageUrl'] = $this->urlGenerator->linkToRoute(
 					'cookbook.recipe.image',
 					[
@@ -326,6 +329,7 @@ class RecipeImplementation {
 		try {
 			$recipes = $this->service->getRecipesByKeywords($keywords);
 			foreach ($recipes as $i => $recipe) {
+				$recipes[$i]['recipe_id'] = strval($recipe['recipe_id']);
 				$recipes[$i]['imageUrl'] = $this->urlGenerator->linkToRoute(
 					'cookbook.recipe.image',
 					[
